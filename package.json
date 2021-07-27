@@ -1,5 +1,5 @@
 {
-  "name": "network-emulator",
+  "name": "cozy-space-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -34,6 +34,20 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.jsx",
+        "options": {
+          "jsxSingleQuote": true
+        }
+      }
     ]
   }
 }
