@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import asteroid from './assets/asteroid.svg'
+import { PostsList } from './PostsList'
 
 const Wrapper = styled.section`
   max-width: 100%;
   margin: 0 auto;
   padding: 0 20px 15px;
 `
-
+const Main = styled.section`
+  height: 100vh;
+`
 const Title = styled.h1`
   font-size: 56px;
   line-height: 80px;
@@ -64,21 +67,34 @@ const Textarea = styled.textarea`
 `
 
 const Button = styled.button`
-  margin-top: 3rem;
+  margin-top: 7%;
   max-width: 120px;
   max-height: 40px;
   outline: none;
   border-radius: 30px;
   background: linear-gradient(45deg, #66538f 30%, #7984e8 60%, #2d3159);
-  border: none;
+  border: transparent;
   color: #000;
-  font-size: 26px;
-  font-family: 'Tourney', cursive;
-  font-weight: 700;
-  text-align: center;
+  font-size: 28px;
+  font-family: 'Bungee Shade', cursive;
+  font-weight: 900;
   cursor: pointer;
   letter-spacing: 1px;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.5s;
+  top: 0;
+  position: relative;
+  &:hover {
+    top: 5px;
+    border: 2px solid #2efef7;
+    background: linear-gradient(45deg, #41265c 33%, #2efef7 66%, #5f04b4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 `
 
 const Label = styled.label`
@@ -89,21 +105,22 @@ const Label = styled.label`
   font-family: 'Tourney', cursive;
 `
 
-function App() {
+export function App() {
   return (
     <Wrapper>
-      <Title>
-        Cozy Space <Img src={asteroid} alt="Asteroid" />
-      </Title>
-      <Form method="POST">
-        <Label>Your name</Label>
-        <Input />
-        <Label>Share what`s in your mind</Label>
-        <Textarea />
-        <Button>post</Button>
-      </Form>
+      <Main>
+        <Title>
+          Cozy Space <Img src={asteroid} alt="Asteroid" />
+        </Title>
+        <Form>
+          <Label>Your name</Label>
+          <Input />
+          <Label>Share what`s in your mind</Label>
+          <Textarea />
+          <Button>go!</Button>
+        </Form>
+      </Main>
+      <PostsList />
     </Wrapper>
   )
 }
-
-export default App
