@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import asteroid from './assets/asteroid.svg'
 import { PostsList } from './PostsList'
+import { Posts } from './Data'
 
 const Wrapper = styled.section`
   max-width: 100%;
@@ -105,7 +106,10 @@ const Label = styled.label`
   font-family: 'Tourney', cursive;
 `
 
+const postsInteractive = new Posts()
+
 export function App() {
+  const [posts, setPosts] = React.useState(postsInteractive.getPosts())
   return (
     <Wrapper>
       <Main>
@@ -120,7 +124,7 @@ export function App() {
           <Button>go!</Button>
         </Form>
       </Main>
-      <PostsList />
+      <PostsList posts={posts} />
     </Wrapper>
   )
 }
