@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+
 const Form = styled.div`
   margin: 0 auto;
   padding-top: 5%;
@@ -73,18 +74,21 @@ const Label = styled.label`
   font-family: 'Tourney', cursive;
 `
 
-/**
- * @typedef {{name: string, text: string}} Post
- * @typedef {{onSend: (post: Post) => void}} Props
- * @param {Props} props
- */
+interface Post {
+  name: string
+  text: string
+}
 
-export function PostSendForm(props) {
+interface Props {
+  onSend: (post: Post) => void
+}
+
+export function PostSendForm(props: Props) {
   const [name, setName] = React.useState('')
   const [text, setText] = React.useState('')
 
   const onButtonClick = () => {
-    const post = {
+    const post: Post = {
       name,
       text,
     }

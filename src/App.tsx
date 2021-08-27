@@ -36,14 +36,17 @@ const Img = styled.img`
   max-width: 100%;
 `
 
+interface Post {
+  name: string
+  text: string
+}
+
 const postsInteractive = new Posts()
 
 export function App() {
   const [posts, setPosts] = React.useState(postsInteractive.getPosts())
 
-  /** @param {{name: string, text: string}} post */
-
-  const onSend = (post) => {
+  const onSend = (post: Post) => {
     const date = new Date(Date.now())
     const newPost = {
       key: '',

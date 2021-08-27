@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { PostItem } from './PostItem'
+import { Post } from './types'
 
 const List = styled.div`
   max-width: 400px;
@@ -12,11 +13,11 @@ const List = styled.div`
   }
 `
 
-/**
- * @typedef {{key: string, name: string, date: string, text: string}} Post
- * @param {{posts: Post[]}} props
- **/
-export function PostsList(props) {
+interface Props {
+  posts: Post[]
+}
+
+export function PostsList(props: Props) {
   return (
     <List>
       {props.posts.map((item) => (

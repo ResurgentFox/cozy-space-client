@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+
 const PostMessage = styled.div`
   display: flex;
   flex-direction: column;
@@ -35,10 +36,14 @@ const TextMessage = styled.div`
   font-size: 14px;
 `
 
-/**
- * @param {{name: string; date: string; text: string}} props
- */
-export function PostItem(props) {
+interface Props {
+  name: string
+  date: string
+  text: string
+  key: string
+}
+
+export function PostItem(props: Props) {
   return (
     <PostMessage>
       <UserData>
