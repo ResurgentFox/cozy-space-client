@@ -34,6 +34,7 @@ const TextMessage = styled.div`
   border-radius: 30px;
   background-color: #7984e8;
   font-size: 14px;
+  word-wrap: break-word;
 `
 
 interface Props {
