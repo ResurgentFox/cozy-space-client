@@ -4,6 +4,7 @@ import asteroid from './assets/asteroid.svg'
 import { PostsList } from './PostsList'
 import { Posts } from './Data'
 import { PostSendForm } from './PostSendForm'
+import { Post, FullPost } from './types'
 
 
 const Wrapper = styled.section`
@@ -36,32 +37,24 @@ const Img = styled.img`
   max-width: 100%;
 `
 
-interface Post {
-  name: string
-  text: string
-}
-
 const postsInteractive = new Posts()
 
 export function App() {
-  const [posts, setPosts] = React.useState(postsInteractive.getPosts())
+  const [posts, setPosts] = React.useState<FullPost[]>([])
 
-  const onSend = (post: Post) => {
-    const date = new Date(Date.now())
-    const newPost = {
-      key: '',
-      name: post.name,
-      text: post.text,
-      date: date
-        .toLocaleTimeString(navigator.language, {
-          hour: '2-digit',
-          minute: '2-digit',
-        })
-        .replace(/(:\d{2}& [AP]M)$/, ':'),
-    }
-    const allPosts = [newPost, ...posts]
-    setPosts(allPosts)
+  const onSend = async (post: Post) => {
+    await postsInteractive.sendPost(post)
+    fetchPosts()
   }
+
+  const fetchPosts = async () => {
+    const newPosts = await postsInteractive.getPosts()
+    setPosts(await newPosts.json())
+  }
+
+  React.useEffect(() => {
+    fetchPosts()
+  }, [])
 
   return (
     <Wrapper>

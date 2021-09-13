@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { PostItem } from './PostItem'
-import { Post } from './types'
+import { FullPost } from './types'
 
 const List = styled.div`
   max-width: 400px;
@@ -14,7 +14,7 @@ const List = styled.div`
 `
 
 interface Props {
-  posts: Post[]
+  posts: FullPost[]
 }
 
 export function PostsList(props: Props) {
@@ -22,9 +22,9 @@ export function PostsList(props: Props) {
     <List>
       {props.posts.map((item) => (
         <PostItem
-          key={item.key}
+          key={item._id}
           name={item.name}
-          date={item.date}
+          date={String(item.timestamp)}
           text={item.text}
         />
       ))}

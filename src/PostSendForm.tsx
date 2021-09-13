@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import { Post } from './types'
 
 const Form = styled.div`
   margin: 0 auto;
@@ -73,11 +73,6 @@ const Label = styled.label`
   font-size: 20px;
   font-family: 'Tourney', cursive;
 `
-
-interface Post {
-  name: string
-  text: string
-}
 
 interface Props {
   onSend: (post: Post) => void
