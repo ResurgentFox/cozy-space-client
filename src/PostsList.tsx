@@ -24,7 +24,7 @@ export function PostsList(props: Props) {
         <PostItem
           key={item._id}
           name={item.name}
-          date={String(item.timestamp)}
+          timestamp={item.timestamp}
           text={item.text}
         />
       ))}

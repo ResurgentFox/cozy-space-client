@@ -39,17 +39,21 @@ const TextMessage = styled.div`
 
 interface Props {
   name: string
-  date: string
+  timestamp: number
   text: string
-  key: string
 }
 
 export function PostItem(props: Props) {
+  const time = new Date(props.timestamp).toLocaleString(navigator.language, {
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+  
   return (
     <PostMessage>
       <UserData>
         <UserName>{props.name}</UserName>
-        <PostUploadTime>{props.date}</PostUploadTime>
+        <PostUploadTime>{time}</PostUploadTime>
       </UserData>
       <TextMessage>{props.text}</TextMessage>
     </PostMessage>
