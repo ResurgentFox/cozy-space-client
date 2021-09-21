@@ -44,7 +44,6 @@ export function App() {
 
   const onSend = async (post: Post) => {
     await postsInteractive.sendPost(post)
-    fetchPosts()
   }
 
   const fetchPosts = async () => {
@@ -55,6 +54,13 @@ export function App() {
   React.useEffect(() => {
     fetchPosts()
   }, [])
+
+  React.useEffect(() => {
+    postsInteractive.onNewPost((newPost) => {
+      const newPosts = [newPost, ...posts]
+      setPosts(newPosts)
+    })
+  }, [posts])
 
   return (
     <Wrapper>
