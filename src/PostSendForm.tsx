@@ -91,12 +91,24 @@ export function PostSendForm(props: Props) {
     props.onSend(post)
     setText('')
   }
+
+  const onKeyEnter = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      onButtonClick()
+      e.preventDefault()
+    }
+  }
+
   return (
     <Form>
       <Label>Your name</Label>
       <Input value={name} onChange={(e) => setName(e.target.value)} />
       <Label>Share what`s in your mind</Label>
-      <Textarea value={text} onChange={(e) => setText(e.target.value)} />
+      <Textarea
+        value={text}
+        onKeyPress={onKeyEnter}
+        onChange={(e) => setText(e.target.value)}
+      />
       <Button onClick={onButtonClick}>go!</Button>
     </Form>
   )
