@@ -5,7 +5,7 @@ import { PostsList } from './PostsList'
 import { Posts } from './Data'
 import { PostSendForm } from './PostSendForm'
 import { Post, FullPost } from './types'
-
+import { Loader } from './Loader'
 
 const Wrapper = styled.section`
   max-width: 100%;
@@ -41,14 +41,17 @@ const postsInteractive = new Posts()
 
 export function App() {
   const [posts, setPosts] = React.useState<FullPost[]>([])
+  const [loading, setLoading] = React.useState(false)
 
   const onSend = async (post: Post) => {
     await postsInteractive.sendPost(post)
   }
 
   const fetchPosts = async () => {
+    setLoading(true)
     const newPosts = await postsInteractive.getPosts()
     setPosts(await newPosts.json())
+    setLoading(false)
   }
 
   React.useEffect(() => {
@@ -68,7 +71,7 @@ export function App() {
         <Title>
           Cozy Space <Img src={asteroid} alt="Asteroid" />
         </Title>
-        <PostSendForm onSend={onSend} />
+        {loading ? <Loader /> : <PostSendForm onSend={onSend} />}
       </Main>
       <PostsList posts={posts} />
     </Wrapper>
