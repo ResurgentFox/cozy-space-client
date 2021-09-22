@@ -50,6 +50,7 @@ export function App() {
   const fetchPosts = async () => {
     setLoading(true)
     const newPosts = await postsInteractive.getPosts()
+    await wait(3000)
     setPosts(await newPosts.json())
     setLoading(false)
   }
@@ -76,4 +77,8 @@ export function App() {
       <PostsList posts={posts} />
     </Wrapper>
   )
+}
+
+function wait(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
