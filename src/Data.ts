@@ -1,11 +1,12 @@
 import { FullPost, Post } from './types'
 
+const serverAddress = process.env.REACT_APP_URL || '127.0.0.1:3001'
 export class Posts {
   private ws: WebSocket
   private handleNewPost?: (post: FullPost) => void 
   
   constructor() {
-    this.ws = new WebSocket('ws://127.0.0.1:3005')
+    this.ws = new WebSocket(`ws://${serverAddress}`)
     this.ws.onmessage = event => { 
       this.handleNewPost?.(JSON.parse(event.data))
     }
@@ -16,9 +17,9 @@ export class Posts {
   }
 
   getPosts() {
-    return fetch('http://127.0.0.1:3001/get_posts')
+    return fetch(`http://${serverAddress}/get_posts`)
   }
   sendPost(post: Post) {
-    return fetch(`http://127.0.0.1:3001/send_post?name=${post.name}&text=${post.text}`)
+    return fetch(`http://${serverAddress}/send_post?name=${post.name}&text=${post.text}`)
   }
 }
