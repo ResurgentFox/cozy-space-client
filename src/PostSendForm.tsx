@@ -3,7 +3,10 @@ import styled from 'styled-components'
 import { Post } from './types'
 
 const Form = styled.div`
+  top: 0;
+  position: sticky;
   margin: 0 auto;
+  margin-bottom: 5%;
   padding-top: 5%;
   @media (max-width: 320px) {
     padding-top: 5px;
