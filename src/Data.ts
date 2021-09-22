@@ -6,7 +6,7 @@ export class Posts {
   private handleNewPost?: (post: FullPost) => void 
   
   constructor() {
-    this.ws = new WebSocket(`ws://${serverAddress}`)
+    this.ws = new WebSocket(`wss://${serverAddress}`)
     this.ws.onmessage = event => { 
       this.handleNewPost?.(JSON.parse(event.data))
     }
