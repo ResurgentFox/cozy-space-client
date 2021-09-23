@@ -61,11 +61,6 @@ const Button = styled.button`
   position: relative;
   &:hover {
     top: 5px;
-    border: 2px solid #2efef7;
-    background: linear-gradient(45deg, #41265c 33%, #2efef7 66%, #5f04b4);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 `
 
