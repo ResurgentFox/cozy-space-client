@@ -72,6 +72,31 @@ const Label = styled.label`
   font-family: 'Tourney', cursive;
 `
 
+const ErrorText = styled.div`
+  font-family: 'Tourney', cursive;
+  margin-top: 3rem;
+  margin-bottom: 5%;
+  padding: 8px;
+  color: #4ef2e7;
+  text-align: center; 
+  font-size: 20px;     
+  font-weight: 600;
+  border: 2px solid  #4ef2e7;
+  border-radius: 15px; 
+  max-width: 400px;
+  max-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const ErrorTextSmall = styled.div`
+  color: #4ef2e7;
+  font-size: 14px; 
+  min-height: 14px;
+  margin-bottom: 2px;
+`
+
 interface Props {
   onSend: (post: Post) => void
 }
@@ -80,13 +105,22 @@ export function PostSendForm(props: Props) {
   const [name, setName] = React.useState('')
   const [text, setText] = React.useState('')
 
+  const [validName, setValidName] = React.useState(true)
+  const [validText, setValidText] = React.useState(true)
+  const [hasError, setHasError] = React.useState(false);
+
   const onButtonClick = () => {
     const post: Post = {
       name,
       text,
     }
-
-    props.onSend(post)
+    
+    if (name.trim() && text.trim()){
+      props.onSend(post) 
+      setHasError(false)
+    } else {
+      setHasError(true)
+    }
     setText('')
   }
 
@@ -97,17 +131,33 @@ export function PostSendForm(props: Props) {
     }
   }
 
+  const onNameBlur = () => { 
+    setValidName(!!name)
+  }
+
+  const onTextBlur = () => {
+    setValidText(!!text)
+  }
+
   return (
     <Form>
       <Label>Your name</Label>
-      <Input value={name} onChange={(e) => setName(e.target.value)} />
+      <ErrorTextSmall>{!validName ? 'Please enter the name!' : ''}</ErrorTextSmall>
+      <Input
+        value={name}
+        onChange={(e) => setName(e.target.value)} 
+        onBlur={onNameBlur}
+      />
       <Label>Share what`s in your mind</Label>
+      <ErrorTextSmall>{!validText ? 'You can`t send empty messages :c' : ''}</ErrorTextSmall>
       <Textarea
         value={text}
         onKeyPress={onKeyEnter}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => setText(e.target.value)}     
+        onBlur={onTextBlur}
       />
       <Button onClick={onButtonClick}>go!</Button>
+      {hasError && <ErrorText>! You need to fill name and text areas !</ErrorText>}
     </Form>
   )
 }
