@@ -13,7 +13,7 @@ const Wrapper = styled.section`
   padding: 0 20px 15px;
 `
 const Main = styled.section`
-  height: 100vh;
+  min-height: 100vh;
 `
 const Title = styled.h1`
   font-size: 56px;
