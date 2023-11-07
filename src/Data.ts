@@ -27,9 +27,9 @@ export class Posts {
   }
 
   getPosts() {
-    return fetch(`https://${serverAddress}/get_posts`)
+    return fetch(`http://${serverAddress}/get_posts`)
   }
   sendPost(post: Post) {
-    return fetch(`https://${serverAddress}/send_post?name=${post.name}&text=${post.text}`)
+    return fetch(`http://${serverAddress}/send_post?name=${post.name}&text=${post.text}`)
   }
 }
