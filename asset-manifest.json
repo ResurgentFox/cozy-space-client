@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/cozy-space-client/static/css/main.65d108cc.css",
-    "main.js": "/cozy-space-client/static/js/main.c408a2e2.js",
+    "main.js": "/cozy-space-client/static/js/main.d4401b43.js",
     "static/media/asteroid.svg": "/cozy-space-client/static/media/asteroid.7252a113fd466b9fea85dc50063bd79f.svg",
     "index.html": "/cozy-space-client/index.html",
     "main.65d108cc.css.map": "/cozy-space-client/static/css/main.65d108cc.css.map",
-    "main.c408a2e2.js.map": "/cozy-space-client/static/js/main.c408a2e2.js.map"
+    "main.d4401b43.js.map": "/cozy-space-client/static/js/main.d4401b43.js.map"
   },
   "entrypoints": [
     "static/css/main.65d108cc.css",
-    "static/js/main.c408a2e2.js"
+    "static/js/main.d4401b43.js"
   ]
 }
