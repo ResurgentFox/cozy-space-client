@@ -22,7 +22,7 @@
   "homepage": "https://ResurgentFox.github.io/cozy-space-client/",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build ",
+    "deploy": "gh-pages -d build --repo https://github.com/ResurgentFox/cozy-space-client.git --branch gh-pages",
     "start": "react-scripts  start",
     "build": "react-scripts  build",
     "test": "react-scripts test",
